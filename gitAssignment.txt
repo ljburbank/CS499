@@ -1,0 +1,152 @@
+﻿1. Describe what is the output of the following commands
+    -  `git branch` 
+    -  `git checkout BRANCH_NAME` (USE THE NAME OF AN EXISTING BRANCH)
+    -  `git log --decorate`
+
+
+
+
+The output of ‘git branch’ is a list of the different branches; for this example, the branches are feature-foo and master.
+
+
+The output of ‘git checkout feature-foo’ is a line saying the branch has been switched to ‘feature-foo’.
+
+
+The output of ‘git log --decorate’ displays a list of the commits that have been done on this repository. There have been 3 commits done, with the first committing the empty files, the second creating a skeleton for class A, and the third commit adding in a header to a method.
+
+
+
+
+
+
+2. Try `git log --graph --all`. What do you see?
+
+
+
+
+The output of ‘git log --graph --all’ displays a list of multiple commits that have been done throughout the repository’s history. It shows the commits made initially on the master branch, and then the foo() header commit is branched out into the ‘feature-foo’ branch. It shows a recent commit that was done to the ‘master’ branch.
+
+
+
+
+
+
+3. Use `git diff BRANCH_NAME` to view the differences from a branch and the current branch.
+   Summarize the difference from master to the other branch.
+
+
+
+
+The ‘feature-foo’ branch has a header “public void foo() { }” that is not in the master branch. The master branch has a skeleton “public class B { }” that is not inside of the ‘feature-foo’ branch.
+
+
+
+
+
+
+4. Write a command sequence to merge the non-master branch into `master`
+
+
+‘git checkout master’                 ← will swap the current branch to the master branch
+‘git merge feature-foo’                ← will merge feature-foo branch to the master branch
+
+
+
+
+5. Write a command (or sequence) to (i) create a new branch called `math` (from the `master`) 
+and (ii) change to this branch
+
+
+
+
+‘git checkout -b math’
+
+
+
+
+
+
+6. Edit B.java adding the following source code below the content you have there
+System.out.println("I know math, look:")
+System.out.println(2+2)
+
+
+
+
+I have edited the file.
+
+
+
+
+
+
+7. Write a command (or sequence) to commit your changes
+
+
+
+
+‘git commit -a -m “Adding two lines to B.java”’
+
+
+
+
+
+
+8. Change back to the `master` branch and change B.java adding the following source code (commit your change to `master`):
+System.out.println("Hello World")
+
+
+
+
+B.java has been edited and the master branch has been committed after the edit.
+
+
+
+
+
+
+9. Write a command sequence to merge the `math` branch into `master` and describe what happened
+
+
+
+
+‘git merge math’        ← this tries to merge ‘math’ into ‘master’ but it runs into a conflict in
+                        B.java meaning the merge has failed
+
+
+
+
+
+
+
+
+10. Write a set of commands to abort the merge
+
+
+
+
+git merge --abort
+
+
+
+
+
+
+11. Now repeat item 9, but proceed with the manual merge (Editing B.java). All implemented functions are needed. Explain your procedure
+
+
+
+
+Once I was in the ‘master | MERGING’ pointer, I edited B.java to remove the conflicting lines, allowing for all implemented lines of code to remain. Then i did ‘git add B.java’ to allow the new file to be added to the merge without conflicts.
+
+
+
+
+
+
+12. Write a command (or set of commands) to proceed with the merge and make `master` branch up-to-date
+
+
+
+
+‘git merge --continue’                ← finishes the merge after having the conflict resolved
